@@ -4,7 +4,10 @@ import jakarta.validation.constraints.NotNull;
 
 public record PizzariaRequest(
         @NotNull(message = "O nome não pode ser null")
-        String nome
+        String nome,
+
+        @NotNull(message = "O cardapio não pode estar vazio")
+        Set<Produto> cardapio
 ) {
 }
 

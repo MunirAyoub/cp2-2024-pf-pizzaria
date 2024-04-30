@@ -19,13 +19,13 @@ public class Opcional {
             sequenceName = "SQ_OPCIONAL",
             allocationSize = 1
     )
-    @Column(name = "NM_OPCIONAL")
+    @Column(name = "ID_OPCIONAL")
     private Long id;
 
     @Column(name = "NM_OPCIONAL")
     private String nome;
 
-    @Column(name = "PRECO_OPCIONAL")
+    @Column(name = "PRECO")
     private BigDecimal preco;
 
     @ManyToOne
