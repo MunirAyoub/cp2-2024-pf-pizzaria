@@ -37,18 +37,14 @@ public class Pizzaria {
                     @JoinColumn(
                             name = "Pizzaria",
                             referencedColumnName = "ID_PIZZARIA",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_CARDAPIO_PIZZARIA"
-                            )
+                            foreignKey = @ForeignKey(name = "FK_CARDAPIO_PIZZARIA")
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
                             name = "PRODUTO",
                             referencedColumnName = "ID_PRODUTO",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_PIZZARIA_CARDAPIO"
-                            )
+                            foreignKey = @ForeignKey(name = "FK_PIZZARIA_CARDAPIO")
                     )
             }
     )
