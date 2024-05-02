@@ -2,18 +2,20 @@ package br.com.fiap.pizzaria.domain.service;
 
 import br.com.fiap.pizzaria.domain.dto.request.ProdutoRequest;
 import br.com.fiap.pizzaria.domain.dto.response.OpcionalResponse;
+import br.com.fiap.pizzaria.domain.dto.response.PizzariaResponse;
 import br.com.fiap.pizzaria.domain.dto.response.ProdutoResponse;
+import br.com.fiap.pizzaria.domain.entity.Pizzaria;
 import br.com.fiap.pizzaria.domain.entity.Produto;
 import br.com.fiap.pizzaria.domain.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Objects;
 
 @Service
 public class ProdutoService implements ServiceDTO<Produto, ProdutoRequest, ProdutoResponse> {
+
 
     @Autowired
     private ProdutoRepository repo;
@@ -46,14 +48,10 @@ public class ProdutoService implements ServiceDTO<Produto, ProdutoRequest, Produ
 
     @Override
     public Produto toEntity(ProdutoRequest dto) {
-        var sabor = saborService.findById(dto.id());
-
+        var sabor = saborService.findById(dto.sabor().id());
 
         return Produto.builder()
-                .nome(dto.nome())
-                .sabor(sabor)
-                .preco(dto.preco())
-                .build();
+                .nome(dto.nome()).sabor(sabor).preco(dto.preco()).build();
     }
 
     @Override
@@ -66,11 +64,7 @@ public class ProdutoService implements ServiceDTO<Produto, ProdutoRequest, Produ
 
 
         return ProdutoResponse.builder()
-                .id(e.getId())
-                .nome(e.getNome())
-                .sabor(sabor)
-                .preco(e.getPreco())
-                .opcionais(opcional)
-                .build();
+                .id(e.getId()).nome(e.getNome()).sabor(sabor).preco(e.getPreco()).opcionais(opcional).build();
     }
+
 }

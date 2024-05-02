@@ -44,11 +44,9 @@ public class OpcionalService implements ServiceDTO<Opcional, OpcionalRequest, Op
 
     @Override
     public Opcional toEntity(OpcionalRequest dto) {
-        var saborId = saborService.findById(dto.id());
+        var saborId = saborService.findById(dto.sabor().id());
         return Opcional.builder()
-                .nome(dto.nome())
-                .sabor(saborId)
-                .build();
+                .nome(dto.nome()).sabor(saborId).build();
     }
 
     @Override
